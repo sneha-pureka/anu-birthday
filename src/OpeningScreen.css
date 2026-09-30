@@ -1,0 +1,853 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Mono:wght@300;400&family=Italiana&family=Parisienne&display=swap');
+
+
+/* ============================= */
+/* OPENING SCREEN */
+/* ============================= */
+
+.opening {
+  min-height: 100vh;
+  width: 100%;
+
+  position: relative;
+  overflow: hidden;
+
+  background: #f7f3ed;
+  color: #4b4038;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-family: "Manrope", sans-serif;
+}
+
+
+/* ============================= */
+/* GRAIN */
+/* ============================= */
+
+.opening-grain {
+  position: fixed;
+  inset: 0;
+
+  pointer-events: none;
+
+  z-index: 20;
+
+  opacity: .035;
+
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='.4'/%3E%3C/svg%3E");
+}
+
+
+/* ============================= */
+/* DECORATIONS */
+/* ============================= */
+
+.opening-star {
+  position: absolute;
+
+  color: #b98f88;
+
+  font-size: 28px;
+
+  animation: openingFloat 5s ease-in-out infinite;
+}
+
+.opening-star-1 {
+  top: 20%;
+  left: 16%;
+}
+
+.opening-star-2 {
+  bottom: 22%;
+  right: 17%;
+
+  font-size: 22px;
+
+  animation-delay: 1.5s;
+}
+
+.opening-flower {
+  position: absolute;
+
+  left: 12%;
+  bottom: 17%;
+
+  font-size: 48px;
+
+  color: #b98f88;
+
+  opacity: .65;
+
+  animation: openingFloat 6s ease-in-out infinite;
+}
+
+
+@keyframes openingFloat {
+
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+
+  50% {
+    transform: translateY(-12px) rotate(5deg);
+  }
+
+}
+
+
+/* ============================= */
+/* INTRO */
+/* ============================= */
+
+.opening-intro {
+  width: min(900px, 90%);
+
+  text-align: center;
+
+  position: relative;
+
+  z-index: 2;
+
+  animation: openingFade 1s ease;
+}
+
+
+@keyframes openingFade {
+
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+}
+
+
+.opening-label {
+  font-family: "DM Mono", monospace;
+
+  font-size: 8px;
+
+  letter-spacing: 4px;
+
+  text-transform: uppercase;
+
+  color: #897a6d;
+}
+
+
+.opening-intro h1 {
+
+  font-family: "Italiana", serif;
+
+  font-size: clamp(75px, 11vw, 145px);
+
+  font-weight: 400;
+
+  line-height: .75;
+
+  letter-spacing: -3px;
+
+  margin-top: 35px;
+
+}
+
+
+.opening-intro h1 em {
+
+  font-family: "Cormorant Garamond", serif;
+
+  font-style: italic;
+
+  font-size: .72em;
+
+  letter-spacing: 0;
+
+}
+
+
+.opening-line {
+
+  width: 45px;
+
+  height: 1px;
+
+  background: #4b4038;
+
+  margin: 45px auto 25px;
+}
+
+
+.opening-subtitle {
+
+  font-family: "Cormorant Garamond", serif;
+
+  font-size: 21px;
+
+  font-style: italic;
+
+  color: #897a6d;
+}
+
+
+/* ============================= */
+/* ENVELOPE */
+/* ============================= */
+
+.envelope-wrapper {
+
+  margin-top: 55px;
+
+  border: none;
+
+  background: transparent;
+
+  cursor: pointer;
+
+  display: inline-flex;
+
+  flex-direction: column;
+
+  align-items: center;
+
+  color: #4b4038;
+}
+
+
+.envelope {
+
+  width: 300px;
+
+  height: 190px;
+
+  position: relative;
+
+  filter: drop-shadow(
+    0 20px 35px rgba(60, 45, 35, .14)
+  );
+
+  transition: transform .5s ease;
+}
+
+
+.envelope-wrapper:hover .envelope {
+
+  transform:
+    translateY(-10px)
+    rotate(-1deg);
+}
+
+
+/* envelope body */
+
+.envelope-back {
+
+  position: absolute;
+
+  inset: 0;
+
+  background: #dfc7c2;
+
+  border: 1px solid #c9aaa4;
+
+  border-radius: 2px;
+
+  z-index: 1;
+}
+
+
+/* letter coming out */
+
+.envelope-paper {
+
+  position: absolute;
+
+  width: 215px;
+
+  height: 145px;
+
+  left: 42px;
+
+  top: 15px;
+
+  background: #fbf8f2;
+
+  border: 1px solid #ded4c8;
+
+  z-index: 2;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  font-family: "Parisienne", cursive;
+
+  font-size: 30px;
+
+  color: #b98f88;
+
+  transition: transform .5s ease;
+}
+
+
+.envelope-wrapper:hover .envelope-paper {
+
+  transform: translateY(-8px);
+}
+
+
+/* flap */
+
+.envelope-flap {
+
+  position: absolute;
+
+  top: 0;
+  left: 0;
+
+  width: 0;
+  height: 0;
+
+  border-left: 150px solid transparent;
+  border-right: 150px solid transparent;
+  border-top: 100px solid #d4b4af;
+
+  z-index: 5;
+}
+
+
+/* bottom folds */
+
+.envelope-front-left {
+
+  position: absolute;
+
+  bottom: 0;
+  left: 0;
+
+  width: 0;
+  height: 0;
+
+  border-left: 150px solid #e5cdc8;
+  border-top: 95px solid transparent;
+
+  z-index: 6;
+}
+
+
+.envelope-front-right {
+
+  position: absolute;
+
+  bottom: 0;
+  right: 0;
+
+  width: 0;
+  height: 0;
+
+  border-right: 150px solid #e5cdc8;
+  border-top: 95px solid transparent;
+
+  z-index: 6;
+}
+
+
+/* seal */
+
+.envelope-seal {
+
+  position: absolute;
+
+  left: 50%;
+  top: 50%;
+
+  transform: translate(-50%, -50%);
+
+  width: 46px;
+  height: 46px;
+
+  border-radius: 50%;
+
+  background: #b98f88;
+
+  color: #f7f3ed;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  font-size: 23px;
+
+  z-index: 10;
+
+  box-shadow:
+    0 5px 15px rgba(80, 50, 40, .15);
+}
+
+
+/* label */
+
+.open-label {
+
+  margin-top: 20px;
+
+  font-family: "DM Mono", monospace;
+
+  font-size: 7px;
+
+  letter-spacing: 3px;
+
+  text-transform: uppercase;
+
+  color: #897a6d;
+
+  transition: color .3s;
+}
+
+
+.envelope-wrapper:hover .open-label {
+
+  color: #4b4038;
+}
+
+
+/* ============================= */
+/* BOTTOM INFO */
+/* ============================= */
+
+.opening-bottom {
+
+  position: absolute;
+
+  left: 0;
+  right: 0;
+
+  bottom: -80px;
+
+  display: flex;
+
+  justify-content: center;
+
+  align-items: center;
+
+  gap: 15px;
+
+  font-family: "DM Mono", monospace;
+
+  font-size: 7px;
+
+  letter-spacing: 2px;
+
+  text-transform: uppercase;
+
+  color: #897a6d;
+}
+
+
+.opening-bottom div {
+
+  width: 45px;
+
+  height: 1px;
+
+  background: #d6ccc1;
+}
+
+
+/* ============================= */
+/* LETTER */
+/* ============================= */
+
+.letter-scene {
+
+  width: 100%;
+
+  min-height: 100vh;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  padding: 50px 20px;
+
+  animation: letterScene .8s ease;
+}
+
+
+@keyframes letterScene {
+
+  from {
+    opacity: 0;
+    transform: scale(.94);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+}
+
+
+.letter-paper-opening {
+
+  position: relative;
+
+  width: min(650px, 92vw);
+
+  min-height: 650px;
+
+  padding: 80px 75px;
+
+  background: #f8f0e4;
+
+  box-shadow:
+    0 35px 100px rgba(60, 45, 35, .18);
+
+  transform: rotate(-1deg);
+
+  text-align: center;
+
+  animation: paperAppear .8s ease;
+}
+
+
+@keyframes paperAppear {
+
+  from {
+    opacity: 0;
+    transform:
+      rotate(-4deg)
+      scale(.88)
+      translateY(30px);
+  }
+
+  to {
+    opacity: 1;
+    transform:
+      rotate(-1deg)
+      scale(1)
+      translateY(0);
+  }
+
+}
+
+
+.letter-border {
+
+  position: absolute;
+
+  inset: 18px;
+
+  border: 1px solid rgba(120, 100, 80, .2);
+
+  pointer-events: none;
+}
+
+
+.letter-decoration {
+
+  color: #b98f88;
+
+  font-size: 22px;
+
+  margin-bottom: 20px;
+}
+
+
+.letter-label {
+
+  display: block;
+
+  font-family: "DM Mono", monospace;
+
+  font-size: 8px;
+
+  letter-spacing: 3px;
+
+  text-transform: uppercase;
+
+  color: #897a6d;
+}
+
+
+.letter-paper-opening h2 {
+
+  font-family: "Italiana", serif;
+
+  font-size: clamp(60px, 8vw, 85px);
+
+  font-weight: 400;
+
+  line-height: .85;
+
+  margin-top: 18px;
+
+  color: #4b4038;
+}
+
+
+.letter-paper-opening h2 em {
+
+  font-family: "Cormorant Garamond", serif;
+
+  font-style: italic;
+
+}
+
+
+.letter-script {
+
+  display: block;
+
+  margin-top: 15px;
+
+  font-family: "Parisienne", cursive;
+
+  font-size: 27px;
+
+  color: #b98f88;
+}
+
+
+.letter-divider {
+
+  width: 45px;
+
+  height: 1px;
+
+  background: #c9b8aa;
+
+  margin: 35px auto;
+}
+
+
+.letter-message {
+
+  max-width: 450px;
+
+  margin: auto;
+
+  text-align: left;
+}
+
+
+.letter-message p {
+
+  font-family: "Cormorant Garamond", serif;
+
+  font-size: 20px;
+
+  line-height: 1.45;
+
+  margin-bottom: 18px;
+
+  color: #4b4038;
+}
+
+
+.letter-heart {
+
+  margin-top: 25px;
+
+  color: #b98f88;
+
+  font-size: 22px;
+}
+
+
+.letter-signature {
+
+  margin-top: 10px;
+
+  font-family: "Parisienne", cursive;
+
+  font-size: 24px;
+
+  color: #897a6d;
+}
+
+
+/* ============================= */
+/* ENTER BUTTON */
+/* ============================= */
+
+.enter-site {
+
+  margin-top: 35px;
+
+  display: inline-flex;
+
+  align-items: center;
+
+  gap: 14px;
+
+  padding: 14px 22px;
+
+  border: 1px solid #4b4038;
+
+  border-radius: 50px;
+
+  background: transparent;
+
+  color: #4b4038;
+
+  font-family: "DM Mono", monospace;
+
+  font-size: 8px;
+
+  letter-spacing: 1.5px;
+
+  text-transform: uppercase;
+
+  cursor: pointer;
+
+  transition: all .3s ease;
+}
+
+
+.enter-site strong {
+
+  font-size: 16px;
+
+  font-weight: 400;
+
+  transition: transform .3s ease;
+}
+
+
+.enter-site:hover {
+
+  background: #4b4038;
+
+  color: #f7f3ed;
+}
+
+
+.enter-site:hover strong {
+
+  transform: translateX(5px);
+}
+
+
+/* ============================= */
+/* MOBILE */
+/* ============================= */
+
+@media (max-width: 600px) {
+
+  .opening-intro h1 {
+
+    font-size: 75px;
+
+  }
+
+
+  .opening-star-1 {
+
+    left: 8%;
+
+  }
+
+
+  .opening-star-2 {
+
+    right: 8%;
+
+  }
+
+
+  .opening-flower {
+
+    left: 5%;
+
+    bottom: 12%;
+
+  }
+
+
+  .envelope {
+
+    width: 260px;
+
+    height: 165px;
+
+  }
+
+
+  .envelope-flap {
+
+    border-left-width: 130px;
+
+    border-right-width: 130px;
+
+    border-top-width: 87px;
+
+  }
+
+
+  .envelope-front-left {
+
+    border-left-width: 130px;
+
+    border-top-width: 82px;
+
+  }
+
+
+  .envelope-front-right {
+
+    border-right-width: 130px;
+
+    border-top-width: 82px;
+
+  }
+
+
+  .envelope-paper {
+
+    width: 185px;
+
+    height: 125px;
+
+    left: 37px;
+
+  }
+
+
+  .letter-paper-opening {
+
+    min-height: auto;
+
+    padding: 65px 35px;
+
+  }
+
+
+  .letter-paper-opening h2 {
+
+    font-size: 55px;
+
+  }
+
+
+  .letter-message p {
+
+    font-size: 18px;
+
+  }
+
+}
